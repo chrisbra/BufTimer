@@ -2,6 +2,7 @@ BufTimer
 ========
 
 > Time your editing duration
+![screenshot of the plugin](screenshot.png "Screenshot")
 
 This small plugin uses Vims `reltime` feature, to measure how long you spend editing your files.
 
