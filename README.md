@@ -1,7 +1,7 @@
 BufTimer
 ========
 
-Time your editing duration
+> Time your editing duration
 
 This small plugin uses Vims `reltime` feature, to measure how long you spend editing your files.
 
@@ -27,13 +27,23 @@ This variable determines, which buffers it will consider when outputting the `:B
   (default value: 0)
 * `g:buftimer_map`
 This Variable can be set to a keys combination to trigger the output of the `:BufTimer` report. To specify a key mapping, simply put into your .vimrc:
+
     :let g:buftimer_map = "<leader>bt"
+
 (default value: not set)
 * `g:buftimer_report_map`
 This Variable can be set to a keys combination to trigger the output of the `:BufTimer` report. To specify a key mapping, simply put into your .vimrc:
+
     :let g:buftimer_report_map = "<leader>br"
+
 (default value: not set)
 
+Installation
+---
+
+Use the plugin manager of your choice. Or download the [Vimball][] version of the plugin
+
+[Vimball] https://github.com/chrisbra/BufTimer/
 
 License & Copyright
 -------
