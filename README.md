@@ -28,13 +28,13 @@ This variable determines, which buffers it will consider when outputting the `:B
 * `g:buftimer_map`
 This Variable can be set to a keys combination to trigger the output of the `:BufTimer` report. To specify a key mapping, simply put into your .vimrc:
 
-    :let g:buftimer_map = "<leader>bt"
+	:let g:buftimer_map = "<leader>bt"
 
 (default value: not set)
 * `g:buftimer_report_map`
 This Variable can be set to a keys combination to trigger the output of the `:BufTimer` report. To specify a key mapping, simply put into your .vimrc:
 
-    :let g:buftimer_report_map = "<leader>br"
+	:let g:buftimer_report_map = "<leader>br"
 
 (default value: not set)
 
@@ -43,7 +43,7 @@ Installation
 
 Use the plugin manager of your choice. Or download the [Vimball][] version of the plugin, edit it with Vim and simply source it (`:so %`).
 
-[Vimball] https://raw.github.com/chrisbra/BufTimer/master/BufTimer.vmb
+[Vimball]: https://raw.github.com/chrisbra/BufTimer/master/BufTimer.vmb
 
 License & Copyright
 -------
