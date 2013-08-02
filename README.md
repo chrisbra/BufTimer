@@ -50,3 +50,6 @@ License & Copyright
 
 Based on work by Bill McCarthy. Further developed by Christian Brabandt. 
 The Vim License applies. See `:h license`
+
+© 2013 by Christian Brabandt
+__NO WARRANTY, EXPRESS OR IMPLIED.  USE AT-YOUR-OWN-RISK__
