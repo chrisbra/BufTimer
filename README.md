@@ -41,9 +41,9 @@ This Variable can be set to a keys combination to trigger the output of the `:Bu
 Installation
 ---
 
-Use the plugin manager of your choice. Or download the [Vimball][] version of the plugin
+Use the plugin manager of your choice. Or download the [Vimball][] version of the plugin, edit it with Vim and simply source it (`:so %`).
 
-[Vimball] https://github.com/chrisbra/BufTimer/
+[Vimball] https://raw.github.com/chrisbra/BufTimer/master/BufTimer.vmb
 
 License & Copyright
 -------
