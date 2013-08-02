@@ -1,3 +1,10 @@
+" BufTimer.vim - Timing statistics for your editing session
+" ---------------------------------------------------------
+" Version:   0.1
+" Maintainer:  Christian Brabandt <cb@256bit.org>
+" Last Change: Sat, 16 Feb 2013 22:28:31 +0100
+"
+" Script: http://www.vim.org/scripts/script.php?script_id=3075
 " BufTimer Report Plugin: Documentation "{{{2
 " Idea: https://groups.google.com/d/msg/vim_use/QgPspne7hRU/NjkFsfgPFjMJ
 " Initial Plugin Version: Bill McCarthy 
