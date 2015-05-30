@@ -176,6 +176,46 @@ function! s:WriteReport(filename, report) "{{{3
   endtry
 endfunction
 
+" Periodically save the report automatically.
+" Set this to the auto-save interval in minutes.
+" 0 disables the feature (default)
+if !exists('g:buf_report_autosave_periodic')
+  let g:buf_report_autosave_periodic = 0
+endif
+
+set updatetime=1000
+let g:buf_report_autosave_periodic = 1
+
+function! s:autoSavePeriodic() " {{{3
+  " Automatically saves the current report every few minutes.
+  " Called by the [CursorHold] [] and [CursorHoldI] [] automatic
+  "
+  " [CursorHold]: http://vimdoc.sourceforge.net/htmldoc/autocmd.html#CursorHold
+  " [CursorHoldI]: http://vimdoc.sourceforge.net/htmldoc/autocmd.html#CursorHoldI
+  "
+  if g:buf_report_autosave_periodic > 0
+    let interval = g:buf_report_autosave_periodic " * 60
+    if exists('g:buf_report_last_flushed')
+      let next_save = g:buf_report_last_flushed + interval
+    else
+      let next_save = 0
+    end
+    echo "Running s:autoSavePeriodic " . localtime(). ". Next save is " . next_save
+
+    let s:report=[ "this is a report" ]
+    let s:fname = "/tmp/report"
+
+    if localtime() > next_save
+      echo "Writing file"
+      call s:WriteReport(s:fname, s:report)
+      let g:buf_report_last_flushed = localtime()
+    endif
+  endif
+
+endfunction
+
+autocmd CursorHold,CursorHoldI * call s:autoSavePeriodic()
+
 " Interface: "{{{2
 command! -nargs=? -complete=file BufTimerReport call s:BufTimerReport(<f-args>)
 command! BufTimer echo s:BufTimer()
