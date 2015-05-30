@@ -39,6 +39,13 @@ This Variable can be set to a keys combination to trigger the output of the `:Bu
 
 (default value: not set)
 
+Commands
+--------
+
+* `:BufTimer` Report the time spent in the current buffer
+* `:BufTimerReport` Print a report about the time spent in all buffers.
+* `:BufTimerReport filename` Print a report to file when Vim quits
+
 Installation
 ---
 

@@ -29,6 +29,11 @@
 "           To specify a key, set in your .vimrc:
 "           :let g:buftimer_map = "<leader>br"
 "
+" Commands:
+" :BufTimer - Print the time spent in the current Buffer
+" :BufTimerReport - Print a report about the time spent in all buffers
+" :BufTimerReport filename - Print a report about the time spent in all buffers
+"                            when Vim quits to 'filename'
 " Plugin Init: "{{{2
 if exists("g:loaded_buftimer") ||
       \ &cp ||
