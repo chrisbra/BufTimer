@@ -201,7 +201,9 @@ function! s:autoSavePeriodic() " {{{3
     end
     echo "Running s:autoSavePeriodic " . localtime(). ". Next save is " . next_save
 
-    let s:report=[ "this is a report" ]
+    let s:opts = g:btrOpt
+    let s:report = s:BufTimeGenerateReport(s:opts)
+
     let s:fname = "/tmp/report"
 
     if localtime() > next_save
