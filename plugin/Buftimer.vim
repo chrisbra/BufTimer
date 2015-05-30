@@ -201,7 +201,9 @@ function! s:autoSavePeriodic() " {{{3
     end
     echo "Running s:autoSavePeriodic " . localtime(). ". Next save is " . next_save
 
-    let s:report=[ "this is a report" ]
+    let s:opts = g:btrOpt
+    let s:report = s:BufTimeGenerateReport(s:opts)
+
     let s:fname = "/tmp/report"
 
     if localtime() > next_save
@@ -252,4 +254,5 @@ let &cpoptions = s:cpo_hold
 unlet s:cpo_hold
 
 " vim: sw=2 sts=2 ts=8 tw=79
+
 
