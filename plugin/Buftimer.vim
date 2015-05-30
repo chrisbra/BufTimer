@@ -7,12 +7,12 @@
 " Script: http://www.vim.org/scripts/script.php?script_id=3075
 " BufTimer Report Plugin: Documentation "{{{2
 " Idea: https://groups.google.com/d/msg/vim_use/QgPspne7hRU/NjkFsfgPFjMJ
-" Initial Plugin Version: Bill McCarthy 
+" Initial Plugin Version: Bill McCarthy
 "    at https://groups.google.com/d/msg/vim_use/Hd1p6iIx9KY/AZ6cXBP9uL4J
 " Licence: Vim-License
-" 
-" Configuration: 
-" 
+"
+" Configuration:
+"
 " g:btrOpt: Determines, for which buffers to collect Timing Statistics.
 "	    0:  Only consider existing buffers
 "	    1:  Only consider listed buffers
@@ -91,7 +91,6 @@ else
   endfunction!
 endif
 
-
 " Functions: "{{{2
 function! s:Round(val) "{{{3
   if has("float")
@@ -120,6 +119,34 @@ function! s:BufTimer(...) "{{{3
   if exists('s:total') | let s:total += secs | endif
   return s:Secs2Str(secs)
 endfunction
+
+function! s:BufTimeGenerateReport(...) "{{{3
+  if !exists('g:btrOpt') || g:btrOpt < 0 || g:btrOpt > 2
+    echomsg 'Bad g:btrOpt'
+    return
+  endif
+
+  let s:total = s:zero
+  let report = [s:BTRtitles[g:btrOpt],
+             \"Buf  hh:mm:ss  Buffer Name",
+             \"---  --------  -----------"]
+
+  for i in range(1,bufnr('$'))
+    if ((!g:btrOpt && bufexists(i))
+             \|| (g:btrOpt == 1 && bufloaded(i))
+             \|| (g:btrOpt == 2 && buflisted(i)))
+      let str = printf("%3d %9s  %s", i, s:BufTimer(i), bufname(i))
+      call add(report, str)
+    endif
+  endfor
+  call add(report, "---  --------")
+  call add(report, printf("Tot %9s",s:Secs2Str(s:total)))
+
+  unlet s:total
+
+  return report
+endfunction
+
 function! s:BufTimerReport(...) "{{{3
   if !exists('g:btrOpt') || g:btrOpt < 0 || g:btrOpt > 2
     echomsg 'Bad g:btrOpt'
@@ -129,21 +156,9 @@ function! s:BufTimerReport(...) "{{{3
   if a:0
     let filename=fnameescape(a:1)
   endif
-  let s:total = s:zero
-  let report = [s:BTRtitles[g:btrOpt],
-	      \"Buf  hh:mm:ss  Buffer Name",
-	      \"---  --------  -----------"]
 
-  for i in range(1,bufnr('$'))
-    if ((!g:btrOpt && bufexists(i))
-	      \|| (g:btrOpt == 1 && bufloaded(i))
-	      \|| (g:btrOpt == 2 && buflisted(i)))
-      let str = printf("%3d %9s  %s", i, s:BufTimer(i), bufname(i))
-      call add(report, str)
-    endif
-  endfor
-  call add(report, "---  --------")
-  call add(report, printf("Tot %9s",s:Secs2Str(s:total)))
+  let opts = g:btrOpt
+  let report = s:BufTimeGenerateReport(opts)
 
   if empty(filename)
     for i in report
@@ -158,22 +173,6 @@ function! s:BufTimerReport(...) "{{{3
     augroup end
   endif
 
-  unlet s:total
-endfunction
-
-function! s:WriteReport(filename, report) "{{{3
-  if v:dying
-    return
-  endif
-
-  try
-    call writefile(a:report, a:filename)
-  catch
-    echohl Error
-    echo "Error Writing file: '".a:filename.'": '.v:exception
-    echohl Normal
-    sleep
-  endtry
 endfunction
 
 " Periodically save the report automatically.
@@ -216,6 +215,21 @@ endfunction
 
 autocmd CursorHold,CursorHoldI * call s:autoSavePeriodic()
 
+function! s:WriteReport(filename, report) "{{{3
+  if v:dying
+    return
+  endif
+
+  try
+    call writefile(a:report, a:filename)
+  catch
+    echohl Error
+    echo "Error Writing file: '".a:filename.'": '.v:exception
+    echohl Normal
+    sleep
+  endtry
+endfunction
+
 " Interface: "{{{2
 command! -nargs=? -complete=file BufTimerReport call s:BufTimerReport(<f-args>)
 command! BufTimer echo s:BufTimer()
@@ -238,3 +252,4 @@ let &cpoptions = s:cpo_hold
 unlet s:cpo_hold
 
 " vim: sw=2 sts=2 ts=8 tw=79
+
