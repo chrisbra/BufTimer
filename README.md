@@ -14,7 +14,6 @@ This plugin is based on Bill McCarthys [BufTimer][1] plugin which itself is base
 [2]: https://groups.google.com/d/msg/vim_use/QgPspne7hRU/NjkFsfgPFjMJ
 [3]: https://groups.google.com/group/vim_use
 
-
 Configuration
 -------------
 
@@ -38,6 +37,19 @@ This Variable can be set to a keys combination to trigger the output of the `:Bu
 	:let g:buftimer_report_map = "<leader>br"
 
 (default value: not set)
+* `g:buf_report_autosave_periodic`
+This Variable can be set in order to periodicly (in seconds) save report to a file. Simply put into your .vimrc:
+
+        :let g:buf_report_autosave_periodic = 1000
+
+(default : disabled)
+
+* `g:buf_report_autosave_dir`
+This Variable can be set in order to specify which directory report file will written to
+
+        :let g:buf_report_autosave_dir = "/tmp"
+
+(default : /tmp)
 
 Commands
 --------
@@ -56,7 +68,7 @@ Use the plugin manager of your choice. Or download the [Vimball][] version of th
 License & Copyright
 -------
 
-Based on work by Bill McCarthy. Further developed by Christian Brabandt. 
+Based on work by Bill McCarthy. Further developed by Christian Brabandt.
 The Vim License applies. See `:h license`
 
 © 2013 by Christian Brabandt

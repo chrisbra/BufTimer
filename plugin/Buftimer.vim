@@ -182,8 +182,9 @@ if !exists('g:buf_report_autosave_periodic')
   let g:buf_report_autosave_periodic = 0
 endif
 
-set updatetime=1000
-let g:buf_report_autosave_periodic = 1
+if !exists('g:buf_report_autosave_dir')
+  let g:buf_report_autosave_dir = "/tmp"
+endif
 
 function! s:autoSavePeriodic() " {{{3
   " Automatically saves the current report every few minutes.
@@ -191,9 +192,12 @@ function! s:autoSavePeriodic() " {{{3
   "
   " [CursorHold]: http://vimdoc.sourceforge.net/htmldoc/autocmd.html#CursorHold
   " [CursorHoldI]: http://vimdoc.sourceforge.net/htmldoc/autocmd.html#CursorHoldI
+  " [updatetime]
+  "
+  " set updatetime=1000
   "
   if g:buf_report_autosave_periodic > 0
-    let interval = g:buf_report_autosave_periodic " * 60
+    let interval = g:buf_report_autosave_periodic "
     if exists('g:buf_report_last_flushed')
       let next_save = g:buf_report_last_flushed + interval
     else
@@ -204,7 +208,7 @@ function! s:autoSavePeriodic() " {{{3
     let s:opts = g:btrOpt
     let s:report = s:BufTimeGenerateReport(s:opts)
 
-    let s:fname = "/tmp/report"
+    let s:fname = g:buf_report_autosave_dir . "/report"
 
     if localtime() > next_save
       echo "Writing file"
