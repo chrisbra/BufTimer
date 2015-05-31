@@ -208,7 +208,7 @@ function! s:autoSavePeriodic() " {{{3
     let s:opts = g:btrOpt
     let s:report = s:BufTimeGenerateReport(s:opts)
 
-    let s:fname = g:buf_report_autosave_dir . "/report"
+    let s:fname = g:buf_report_autosave_dir . "/buftimer_report.". getpid()
 
     if localtime() > next_save
       echo "Writing file"
