@@ -203,7 +203,6 @@ function! s:autoSavePeriodic() " {{{3
     else
       let next_save = 0
     end
-    echo "Running s:autoSavePeriodic " . localtime(). ". Next save is " . next_save
 
     let s:opts = g:btrOpt
     let s:report = s:BufTimeGenerateReport(s:opts)
@@ -212,7 +211,6 @@ function! s:autoSavePeriodic() " {{{3
     let s:fname = s:fname . getpid() . "." . strftime("%Y.%m.%d")
 
     if localtime() > next_save
-      echo "Writing file"
       call s:WriteReport(s:fname, s:report)
       let g:buf_report_last_flushed = localtime()
     endif
