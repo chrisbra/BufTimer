@@ -28,13 +28,13 @@ This variable determines, which buffers it will consider when outputting the `:B
 * `g:buftimer_map`
 This Variable can be set to a keys combination to trigger the output of the `:BufTimer` report. To specify a key mapping, simply put into your .vimrc:
 
-	:let g:buftimer_map = "<leader>bt"
+        :let g:buftimer_map = "<leader>bt"
 
 (default value: not set)
 * `g:buftimer_report_map`
 This Variable can be set to a keys combination to trigger the output of the `:BufTimer` report. To specify a key mapping, simply put into your .vimrc:
 
-	:let g:buftimer_report_map = "<leader>br"
+        :let g:buftimer_report_map = "<leader>br"
 
 (default value: not set)
 * `g:buf_report_autosave_periodic`
