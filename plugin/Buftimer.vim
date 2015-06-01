@@ -194,8 +194,6 @@ function! s:autoSavePeriodic() " {{{3
   " [CursorHoldI]: http://vimdoc.sourceforge.net/htmldoc/autocmd.html#CursorHoldI
   " [updatetime]: http://vimdoc.sourceforge.net/htmldoc/options.html#%27updatetime%27
   "
-  " set updatetime=1000
-  "
   if g:buf_report_autosave_periodic > 0
     let interval = g:buf_report_autosave_periodic "
     if exists('g:buf_report_last_flushed')
