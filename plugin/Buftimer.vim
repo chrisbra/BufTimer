@@ -180,6 +180,8 @@ endfunction
 " 0 disables the feature (default)
 if !exists('g:buf_report_autosave_periodic')
   let g:buf_report_autosave_periodic = 0
+else
+  autocmd CursorHold,CursorHoldI * call s:autoSavePeriodic()
 endif
 
 if !exists('g:buf_report_autosave_dir')
@@ -215,8 +217,6 @@ function! s:autoSavePeriodic() " {{{3
   endif
 
 endfunction
-
-autocmd CursorHold,CursorHoldI * call s:autoSavePeriodic()
 
 function! s:WriteReport(filename, report) "{{{3
   if v:dying
