@@ -192,7 +192,7 @@ function! s:autoSavePeriodic() " {{{3
   "
   " [CursorHold]: http://vimdoc.sourceforge.net/htmldoc/autocmd.html#CursorHold
   " [CursorHoldI]: http://vimdoc.sourceforge.net/htmldoc/autocmd.html#CursorHoldI
-  " [updatetime]
+  " [updatetime]: http://vimdoc.sourceforge.net/htmldoc/options.html#%27updatetime%27
   "
   " set updatetime=1000
   "
