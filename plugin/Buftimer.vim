@@ -75,23 +75,21 @@ augroup BufTimer
   autocmd FocusLost *   let b:timeAccum = s:BufTimerCalc()
 augroup END
 
-if has("float")
-  function! s:Secs2Str(secs) "{{{3
+" Functions: "{{{2
+function! s:Secs2Str(secs) "{{{2
+  if has("float")
     let hours   = floor(a:secs/3600)
     let minutes = floor((a:secs-hours*3600)/60)
     let seconds = a:secs-hours*3600-minutes*60
     return printf("%0.0f:%02.0f:%02.0f",hours,minutes,seconds)
-  endfunction!
-else
-  function! s:Secs2Str(secs) "{{{3
+  else
     let hours   = a:secs/3600
     let minutes = (a:secs-hours*3600)/60
     let seconds = a:secs-hours*3600-minutes*60
     return printf("%d:%02d:%02d",hours,minutes,seconds)
-  endfunction!
-endif
+  endif
+endfunction!
 
-" Functions: "{{{2
 function! s:Round(val) "{{{3
   if has("float")
     " Bug? round(0.0) == -0.0
