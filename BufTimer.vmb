@@ -2,7 +2,7 @@
 UseVimball
 finish
 plugin/Buftimer.vim	[[[1
-258
+260
 " BufTimer.vim - Timing statistics for your editing session
 " ---------------------------------------------------------
 " Version:   0.1
@@ -40,8 +40,10 @@ plugin/Buftimer.vim	[[[1
 " :BufTimerReport filename - Print a report about the time spent in all buffers
 "                            when Vim quits to 'filename'
 " Plugin Init: "{{{2
+if &cp
+  finish
+endif
 if exists("g:loaded_buftimer") ||
-      \ &cp ||
       \ !has("autocmd") ||
       \ !has("reltime") ||
       \ !has("float") ||

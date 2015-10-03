@@ -35,8 +35,10 @@
 " :BufTimerReport filename - Print a report about the time spent in all buffers
 "                            when Vim quits to 'filename'
 " Plugin Init: "{{{2
+if &cp
+  finish
+endif
 if exists("g:loaded_buftimer") ||
-      \ &cp ||
       \ !has("autocmd") ||
       \ !has("reltime") ||
       \ !has("float") ||
