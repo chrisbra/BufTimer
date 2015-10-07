@@ -55,7 +55,7 @@ set cpoptions&vim
 if !exists('g:btrOpt') | let g:btrOpt = 0 | endif
 
   let s:Str2Nr = function("str2float")
-  let s:zero   = 0.0
+  let s:zero   = s:Str2Nr("0.0")
 
 let s:BTRtitles = ["-----Existing Buffers-----",
 	          \"------Loaded Buffers------",
