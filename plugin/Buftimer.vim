@@ -97,7 +97,7 @@ function! s:Secs2Str(secs) "{{{3
     let seconds = a:secs-hours*3600-minutes*60
     return printf("%d:%02d:%02d",hours,minutes,seconds)
   endif
-endfunction!
+endfunction
 
 function! s:BufTimerCheck()
   " Check for inactivity
